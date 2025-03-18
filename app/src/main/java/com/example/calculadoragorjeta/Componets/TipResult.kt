@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun TipResult(amount: Double, tip15: Double, customTipPercentage: Float, tipCustom: Double) {
     val totalWithCustomTip = amount + tipCustom
+    val totalWith15Tip = amount + tip15
 
     Column(
         modifier = Modifier
@@ -51,8 +52,15 @@ fun TipResult(amount: Double, tip15: Double, customTipPercentage: Float, tipCust
                 .background(Color.Gray.copy(alpha = 0.2f))
                 .padding(12.dp)
         ) {
-            Text("Total", fontSize = 20.sp, color = Color.Black)
-            Text("$${String.format("%.2f", totalWithCustomTip)}", fontSize = 20.sp, color = Color.Black)
+            Row (modifier = Modifier.padding(start = 8.dp).padding(end = 20.dp)) {
+                Text("Total: ", fontSize = 20.sp, color = Color.Black)
+                Text("$${String.format("%.2f", totalWith15Tip)}", fontSize = 18.sp, color = Color.Black)
+            }
+            Row (modifier = Modifier.padding(start = 8.dp)) {
+                Text("Total: ", fontSize = 20.sp, color = Color.Black)
+                Text("$${String.format("%.2f", totalWithCustomTip)}", fontSize = 18.sp, color = Color.Black)
+            }
+
         }
     }
 }
